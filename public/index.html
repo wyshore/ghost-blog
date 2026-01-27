@@ -150,7 +150,7 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 20px;
-    padding: 20px 24px;
+    padding: 15px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -175,6 +175,25 @@
     transition: transform 0.3s ease;
   }
   .nav-links a:hover { transform: scale(1.1); }
+
+  /* 6. LOGO STYLING (The WS) */
+  .gh-navigation-brand a, 
+  .gh-navigation-logo, 
+  [class*="logo"] {
+    font-size: 28px !important;    /* Make it significantly larger */
+    font-weight: 900 !important;   /* Extra thick/bold */
+    letter-spacing: -1.5px !important; /* Tighten the letters for a modern look */
+    color: #0f172a !important;     /* A deep, punchy dark slate */
+    text-transform: uppercase;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+  }
+
+  /* Keep it large even inside the utility bar */
+  #utility-bar .gh-navigation-brand {
+    display: flex;
+    align-items: center;
+  }
 
   /* This targets the individual post containers in the Source theme */
   .gh-card, .gh-post-feed article {
