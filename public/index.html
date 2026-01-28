@@ -5,20 +5,20 @@
 <title>Wyatt Shore</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link as="style" href="/assets/built/screen.css?v=6d474b0b01" rel="preload"/>
-<link as="script" href="/assets/built/source.js?v=6d474b0b01" rel="preload"/>
-<link as="font" crossorigin="anonymous" href="/assets/fonts/inter-roman.woff2?v=6d474b0b01" rel="preload" type="font/woff2"/>
+<link as="style" href="/assets/built/screen.css?v=66ebb55466" rel="preload"/>
+<link as="script" href="/assets/built/source.js?v=66ebb55466" rel="preload"/>
+<link as="font" crossorigin="anonymous" href="/assets/fonts/inter-roman.woff2?v=66ebb55466" rel="preload" type="font/woff2"/>
 <style>
     @font-face {
         font-family: "Inter";
         font-style: normal;
         font-weight: 100 900;
         font-display: optional;
-        src: url(/assets/fonts/inter-roman.woff2?v=6d474b0b01) format("woff2");
+        src: url(/assets/fonts/inter-roman.woff2?v=66ebb55466) format("woff2");
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
 </style>
-<link href="/assets/built/screen.css?v=6d474b0b01" rel="stylesheet" type="text/css"/>
+<link href="/assets/built/screen.css?v=66ebb55466" rel="stylesheet" type="text/css"/>
 <style>
         :root {
             --background-color: #ffffff
@@ -91,204 +91,173 @@
 <link href="https://wyattshore.ca/rss/" rel="alternate" title="Wyatt Shore" type="application/rss+xml"/>
 <script crossorigin="anonymous" data-key="1c64124567ced373d6e6f94eb6" data-locale="en" data-sodo-search="https://wyattshore.ca/" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" defer="" src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js"></script>
 <link href="https://wyattshore.ca/webmentions/receive/" rel="webmention"/>
-<script defer="" src="/public/cards.min.js?v=6d474b0b01"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-<link href="/public/cards.min.css?v=6d474b0b01" rel="stylesheet" type="text/css"/>
+<script defer="" src="/public/cards.min.js?v=66ebb55466"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+<link href="/public/cards.min.css?v=66ebb55466" rel="stylesheet" type="text/css"/>
 <style>
-  /* 1. GLOBAL STYLES (The Dots) */
+  /* --- 1. GLOBAL & BACKGROUND --- */
+  /* This section defines your "Brand Colors" and the background look */
   :root {
-    --bg-color: #f8fafc;
-    --dot-color: #cbd5e1;
+    --bg-color: #f8fafc;   /* The light grey page background */
+    --dot-color: #cbd5e1;  /* The color of the grid dots */
+    --slate-900: #0f172a;  /* Deepest slate for headers */
+    --slate-800: #1e293b;  /* Dark slate for nav links */
   }
 
-  body {
-    background-color: var(--bg-color);
-    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-    background-size: 32px 32px;
-    background-attachment: fixed;
+  /* Controls the "Blueprint" dot grid background across the whole site */
+  html, body {
+    background-color: var(--bg-color) !important;
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px) !important;
+    background-size: 32px 32px !important; /* Space between dots */
+    background-attachment: fixed !important; /* Dots stay still while scrolling */
     margin: 0;
+    min-height: 100vh;
   }
 
-  /* 2. THE HERO (Seawall at the top) */
-  /* We use the 'before' element on the home page so it doesn't repeat */
-  .home-template::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 70vh; /* Adjust this to change how much of the screen the photo takes */
-    background-image: url("/content/images/2026/01/Seawall.JPG") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    position: relative;
-    z-index: 0;
-  }
-
-  /* 3. SUCCESSFUL HIDING LOGIC (From your previous code) */
-  /* We keep .gh-outer hidden ONLY for the header/footer areas to avoid the triple image */
-  #gh-navigation, .gh-navigation, .gh-head, .site-header, .gh-foot, .gh-footer, .site-footer {
+  /* CLEANUP: Force-hides the default Ghost theme elements you don't want */
+  #gh-navigation, .gh-navigation, .gh-head, .site-header, 
+  .gh-foot, .gh-footer, .site-footer, .gh-article-header {
       display: none !important;
   }
 
-  /* 4. CONTENT AREA */
-  /* This ensures your blog posts start below the image and sit on the dots */
-  .gh-viewport {
-    position: relative;
-    z-index: 1;
-    background: transparent !important;
-  }
-
-  /* 5. YOUR PILL NAV (Utility Bar) */
+  /* --- 2. NAVIGATION (The Floating Utility Bar) --- */
+  /* This is the translucent bar at the top of your screen */
   #utility-bar {
-    position: fixed;
+    position: fixed;            /* Sticks to the top while scrolling */
     top: 24px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* Centers the bar horizontally */
     width: 90%;
     max-width: 1400px;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.75); /* Frosted glass effect */
+    backdrop-filter: blur(12px);          /* Blurs the background behind bar */
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 20px;
     padding: 15px 24px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;       /* Logo left, Links right */
     align-items: center;
-    z-index: 99999;
+    z-index: 99999;                       /* Stays on top of everything */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Interaction: Expands slightly when you hover over the nav bar */
   #utility-bar:hover {
     width: 94%;
-    max-width: 1420px;
-    transform: translateX(-50%) translateY(-4px);
+    transform: translateX(-50%) translateY(-4px); /* Lifts up */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   }
 
+  /* Nav Links Styling */
   .nav-links { display: flex; gap: 30px; align-items: center; }
   .nav-links a { 
     text-decoration: none; 
-    color: #1e293b; 
+    color: var(--slate-800); 
     font-weight: 800; 
-    font-size: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; 
   }
-  .nav-links a:hover { transform: scale(1.1); }
+  .nav-links a:hover { transform: scale(1.1); } /* Pops the link slightly on hover */
 
-  /* 6. LOGO STYLING (The WS) */
-  .gh-navigation-brand a, 
-  .gh-navigation-logo, 
-  [class*="logo"] {
-    font-size: 28px !important;    /* Make it significantly larger */
-    font-weight: 900 !important;   /* Extra thick/bold */
-    letter-spacing: -1.5px !important; /* Tighten the letters for a modern look */
-    color: #0f172a !important;     /* A deep, punchy dark slate */
+  /* Your Logo/Brand Name styling (WS / Wyatt Shore) */
+  .gh-navigation-brand a, [class*="logo"] {
+    font-size: 28px !important;
+    font-weight: 900 !important;
+    letter-spacing: -1.5px !important;
+    color: var(--slate-900) !important;
     text-transform: uppercase;
     text-decoration: none !important;
-    transition: all 0.3s ease;
   }
 
-  /* Keep it large even inside the utility bar */
-  #utility-bar .gh-navigation-brand {
-    display: flex;
-    align-items: center;
+  /* --- 3. HOME PAGE HERO (Top Image Section) --- */
+  /* Injects your Seawall photo as a full-width header image */
+  .home-template::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 70vh; /* Image takes up 70% of the screen height */
+    background: url("/content/images/2026/01/Seawall.JPG") center/cover no-repeat !important;
+    position: relative;
+    z-index: 0;
   }
 
-  /* 7. HERO CARD STYLING */
+  /* Invisible container to hold the hero text over the photo */
   .hero-card-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70vh; /* Matches your image height */
-    display: flex;
+    top: 0; left: 0; width: 100%; height: 70vh;
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 10;
-    pointer-events: none; /* Allows you to still click through if needed */
+    pointer-events: none; /* Allows you to click "through" to elements below */
   }
 
+  /* Only shows the Hero Card if you are on the Homepage */
+  .home-template .hero-card-container { display: flex !important; }
+
+  /* The actual frosted card containing your name/bio */
   .hero-card {
-    background: rgba(15, 23, 42, 0.7); /* Dark slate with transparency */
-    backdrop-filter: blur(12px); /* The frosted glass look */
+    background: rgba(15, 23, 42, 0.7); /* Dark semi-transparent background */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 40px 60px;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     max-width: 700px;
-    margin: 0 20px;
-    pointer-events: auto; /* Makes the card interactive again */
+    pointer-events: auto; /* Re-enables clicking on the card itself */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   }
 
-  .hero-card h1 {
-    color: #ffffff !important;
-    font-size: 64px !important;
-    font-weight: 900 !important;
-    margin: 0 0 16px 0 !important;
-    letter-spacing: -2px !important;
-  }
+  .hero-card h1 { color: #fff !important; font-size: 64px !important; font-weight: 900 !important; margin-bottom: 16px !important; letter-spacing: -2px !important; }
+  .hero-card p { color: rgba(255, 255, 255, 0.9) !important; font-size: 20px !important; font-weight: 400 !important; }
 
-  .hero-card p {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 20px !important;
-    line-height: 1.6 !important;
-    margin: 0 !important;
-    font-weight: 400 !important;
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .hero-card {
-      padding: 30px;
-    }
-    .hero-card h1 {
-      font-size: 40px !important;
-    }
-    .hero-card p {
-      font-size: 16px !important;
-    }
-  }
-
-  /* This targets the individual post containers in the Source theme */
-  .gh-card, .gh-post-feed article {
-    background: white !important;
-    padding: 30px !important;
-    margin-bottom: 40px !important;
-    border-radius: 20px !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
-    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Hover effect for the post blocks */
-  .gh-card:hover, .gh-post-feed article:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Optional: Adjust post images to fit nicely in the rounded blocks */
-  .gh-card-image, .gh-post-feed img {
-    border-radius: 12px !important;
-    margin-bottom: 15px !important;
-  }
-
-  /* This keeps the feed centered and not too wide */
+  /* --- 4. POST FEED (Simplified Box Style) --- */
+  /* This targets the feed and gives each post a clean container */
   .gh-post-feed {
-    max-width: 900px !important;
+    max-width: 1000px !important;
     margin: 60px auto !important;
     padding: 0 20px !important;
   }
+
+  /* The Box: Adds the white card look to the default Ghost post structure */
+  .gh-card, .gh-post-feed article {
+    background: white !important;
+    padding: 40px !important;
+    margin-bottom: 40px !important;
+    border-radius: 40px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    border: 2px solid #1e293b !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
   
+    .gh-card:hover, .gh-post-feed article:hover {
+    transform: translateY(-4px) scale(1.01); /* Lifts up and grows slightly */
+    box-shadow: 0 30px 60px rgba(30, 41, 59, 0.2) !important; /* Deepens the navy shadow */
+    border-color: #334155 !important; /* Optional: Slightly lightens the navy border on hover */
+    cursor: pointer;
+  }
+
+  /* The Image: Directly setting the height */
+  .gh-card-image, .gh-post-feed img {
+    height: 250px !important;      /* <--- ADJUST THIS for bigness */
+    width: auto !important;
+    object-fit: cover !important;   /* Crucial: keeps image from stretching */
+    border-radius: 30px !important;
+  }
+  
+  /* --- 5. GLOBAL MOBILE OVERRIDES --- */
+  /* Tweaks font sizes and padding for phone screens */
+  @media (max-width: 768px) {
+    .hero-card { padding: 30px; margin: 0 20px; }
+    .hero-card h1 { font-size: 40px !important; }
+    .gh-card { padding: 30px !important; }
+    #utility-bar { width: 95%; padding: 12px 18px; }
+  }
 </style>
 <div class="hero-card-container">
 <div class="hero-card">
 <h1>Wyatt Shore</h1>
-<p>I am a mechanical engineering student at the University of Victoria. I like working on various technical projects which I've shared here!</p>
+<p>Mechanical engineering student at the University of Victoria. Exploring technical projects and design.</p>
 </div>
 </div>
 </head>
@@ -307,7 +276,7 @@
 <nav class="gh-navigation-menu">
 <ul class="nav">
 <li class="nav-home nav-current"><a href="https://wyattshore.ca/">Home</a></li>
-<li class="nav-about"><a href="https://wyattshore.ca/about/">About</a></li>
+<li class="nav-resume"><a href="https://wyattshore.ca/resume/">Resume</a></li>
 </ul>
 </nav>
 <div class="gh-navigation-actions">
@@ -325,10 +294,10 @@
 <article class="gh-card post">
 <a class="gh-card-link" href="/test-post/">
 <figure class="gh-card-image">
-<picture><img alt="Test Post" loading="lazy" sizes="320px" src="/content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg" srcset="/content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 160w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 320w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 600w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 960w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 1200w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 2000w"/></picture>
+<picture><img alt="Test Post Test Post" loading="lazy" sizes="320px" src="/content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg" srcset="/content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 160w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 320w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 600w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 960w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 1200w, /content/images/2026/01/Gemini_Generated_Image_ov5pwxov5pwxov5p.jpg 2000w"/></picture>
 </figure>
 <div class="gh-card-wrapper">
-<h3 class="gh-card-title is-title">Test Post</h3>
+<h3 class="gh-card-title is-title">Test Post Test Post</h3>
 <p class="gh-card-excerpt is-body">blah blah blah</p>
 <footer class="gh-card-meta">
 <!--
@@ -362,25 +331,55 @@
 </div>
 </footer>
 </div>
-<script src="/assets/built/source.js?v=6d474b0b01"></script>
+<script src="/assets/built/source.js?v=66ebb55466"></script>
 <script>
-    // This creates the HTML structure for your custom pill nav
-    const utilityBarHTML = `
-        <nav id="utility-bar">
-            <div class="nav-left">
-                <a href="/" class="logo">WS</a>
-            </div>
-            <div class="nav-links">
+    (function() {
+        // 1. Grab links from Ghost's internal navigation (which we hid with CSS)
+        // We look for both desktop and mobile menu items
+        const ghostLinks = document.querySelectorAll('.gh-head-menu .nav a, .gh-mobile-menu .nav a');
+        
+        let navItemsHTML = '';
+
+        if (ghostLinks.length > 0) {
+            // If Ghost navigation exists, use those links
+            ghostLinks.forEach(link => {
+                navItemsHTML += `<a href="${link.href}">${link.textContent}</a>`;
+            });
+        } else {
+            // Fallback just in case Ghost hasn't rendered the menu yet
+            navItemsHTML = `
                 <a href="/">Home</a>
                 <a href="/posts">Posts</a>
                 <a href="/resume">Resume</a>
                 <a href="/about">About</a>
-            </div>
-        </nav>
-    `;
+            `;
+        }
 
-    // This injects the code at the very top of the <body> tag
-    document.body.insertAdjacentHTML('afterbegin', utilityBarHTML);
+        // 2. Build the Utility Bar using the links we found
+        const utilityBarHTML = `
+            <nav id="utility-bar">
+                <div class="nav-left">
+                    <a href="/" class="logo">WS</a>
+                </div>
+                <div class="nav-links">
+                    ${navItemsHTML}
+                </div>
+            </nav>
+        `;
+
+        // 3. Inject it
+        document.body.insertAdjacentHTML('afterbegin', utilityBarHTML);
+
+        // 4. Force Resume to open in a new tab if the link contains "pdf" or "resume"
+        document.querySelectorAll('#utility-bar a').forEach(link => {
+            const url = link.href.toLowerCase();
+            const text = link.textContent.toLowerCase();
+            if (url.includes('.pdf') || text.includes('resume')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    })();
 </script>
 </body>
 </html>
