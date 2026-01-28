@@ -128,7 +128,7 @@ Download PDF" name="twitter:description"/>
   html, body {
     background-color: var(--bg-color) !important;
     background-image: radial-gradient(var(--dot-color) 1px, transparent 1px) !important;
-    background-size: 32px 32px !important; /* Space between dots */
+    background-size: 20px 20px !important; /* Space between dots */
     background-attachment: fixed !important; /* Dots stay still while scrolling */
     margin: 0;
     min-height: 100vh;
@@ -196,8 +196,8 @@ Download PDF" name="twitter:description"/>
     content: "";
     display: block;
     width: 100%;
-    height: 70vh; /* Image takes up 70% of the screen height */
-    background: url("/content/images/2026/01/Seawall.JPG") center/cover no-repeat !important;
+    height: 90vh; /* Image takes up 70% of the screen height */
+    background: url("/content/images/2026/01/Seawall_cropped.JPG") center/cover no-repeat !important;
     position: relative;
     z-index: 0;
     border-bottom: 8px solid #0f172a !important; /* Thick navy bar */
@@ -209,7 +209,7 @@ Download PDF" name="twitter:description"/>
   /* Invisible container to hold the hero text over the photo */
   .hero-card-container {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 70vh;
+    top: 0; left: 0; width: 100%; height: 85vh;
     display: none; 
     justify-content: center;
     align-items: center;
@@ -222,10 +222,11 @@ Download PDF" name="twitter:description"/>
 
   /* The actual frosted card containing your name/bio */
   .hero-card {
-    background: rgba(15, 23, 42, 0.7); /* Dark semi-transparent background */
+    background: rgba(15, 23, 42, 0.3); /* Dark semi-transparent background */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 40px 60px;
+    border: 5px solid #1e293b !important;
     border-radius: 24px;
     text-align: center;
     max-width: 700px;
@@ -234,7 +235,8 @@ Download PDF" name="twitter:description"/>
   }
 
   .hero-card h1 { color: #fff !important; font-size: 64px !important; font-weight: 700 !important; margin-bottom: 16px !important; letter-spacing: -2px !important; }
-  .hero-card p { color: rgba(255, 255, 255, 0.9) !important; font-size: 20px !important; font-weight: 400 !important; }
+  .hero-card h2 { color: #fff !important; font-size: 35px !important; font-weight: 500 !important; margin-bottom: 16px !important; letter-spacing: -2px !important; }
+  .hero-card p { color: rgba(255, 255, 255, 0.9) !important; font-size: 16px !important; font-weight: 400 !important; }
 
   /* --- 4. POST FEED (Simplified Box Style) --- */
   /* This targets the feed and gives each post a clean container */
@@ -282,7 +284,8 @@ Download PDF" name="twitter:description"/>
 <div class="hero-card-container">
 <div class="hero-card">
 <h1>Wyatt Shore</h1>
-<p>Mechanical engineering student at the University of Victoria. Exploring technical projects and design.</p>
+<h2>Mechanical Engineer</h2>
+<p>I study mechanical engineering student at the University of Victoria and I enjoy working on interesting personal projects relating to robotics, design, and more. You can read about my work here!</p>
 </div>
 </div>
 </head>
@@ -456,7 +459,6 @@ Download PDF" name="twitter:description"/>
             // Fallback just in case Ghost hasn't rendered the menu yet
             navItemsHTML = `
                 <a href="/">Home</a>
-                <a href="/posts">Posts</a>
                 <a href="/resume">Resume</a>
                 <a href="/about">About</a>
             `;
