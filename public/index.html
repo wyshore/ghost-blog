@@ -125,7 +125,7 @@
   /* --- 2. NAVIGATION (The Floating Utility Bar) --- */
   #utility-bar {
     position: fixed;
-    top: 24px;
+    top: 27px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -135,7 +135,7 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 20px;
-    padding: 15px 24px;
+    padding: 22px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -242,6 +242,7 @@
     border: 5px solid #1e293b !important;
     box-shadow: 0 0 50px rgba(59, 130, 246, 0.5) !important;
     object-fit: cover;
+    overflow: hidden !important;
   }
 
   .gh-card-title {
@@ -255,48 +256,101 @@
     line-height: 1.5 !important;
   }
 
-  /* --- 5. POST PAGE (Fixed Alignment & Cleanup) --- */
-  .post-template .gh-canvas {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    max-width: 850px !important;
-    margin: 0 auto !important;
+/* --- 5. POST PAGE (Fixed Alignment & Cleanup) --- */
+  
+  /* 1. MOVE CONTENT BELOW UTILITY BAR */
+  .post-template .gh-article {
+    margin-top: 150px !important; /* Pushes the whole article down */
   }
 
+  /* 2. UNIFY THE COLUMN */
+  .post-template .gh-canvas, 
+  .post-template .gh-content > * {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Forces everything to start at the left */
+    max-width: 850px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-bottom: 100px !important;
+  }
+
+  /* 3. TITLE STYLING */
   .post-template .gh-article-title {
-    align-self: flex-start !important;
     text-align: left !important;
     font-size: 4.5rem !important;
     font-weight: 900 !important;
     color: #0f172a !important;
     letter-spacing: -1px !important;
+    margin-bottom: 20px !important;
   }
 
+  /* 4. AGGRESSIVE IMAGE ROUNDING */
+  /* We target the figure and the actual image class used by the Source theme */
+  .post-template .gh-article-image,
+  .post-template .gh-feature-image,
+  .post-template .kg-image-card figure {
+      border-radius: 30px !important;
+      overflow: hidden !important;
+      position: relative !important;
+  }
+  
+  .post-template .gh-article-image img,
   .post-template .gh-feature-image img {
-    border-radius: 30px !important;
-    border: 5px solid #1e293b !important;
-    box-shadow: 0 20px 50px rgba(30, 41, 59, 0.15) !important;
+      border-radius: 30px !important;
+      /* This ensures the image fills the rounded container */
+      object-fit: cover !important; 
+      display: block !important;
   }
 
-  /* SOURCE THEME AUTHOR FIXES */
-  .post-template .gh-article-meta-image,
-  .post-template .gh-article-meta-author-image,
-  .post-template .gh-article-meta img,
-  .post-template .gh-article-meta svg {
-    display: none !important;
+  /* 5. BODY TEXT ALIGNMENT */
+  /* This ensures standard paragraphs and lists align with the image left edge */
+  .post-template .gh-content p, 
+  .post-template .gh-content ul, 
+  .post-template .gh-content ol,
+  .post-template .gh-content h2,
+  .post-template .gh-content h3 {
+    text-align: left !important;
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 
+
+  /* 2. REDUCE AUTHOR PADDING */
+  .post-template .gh-article-meta {
+      margin-top: 0px !important; /* Pulls author info closer to title */
+      padding-top: 0 !important;
+      margin-bottom: 20px !important; /* Space between author and image */
+  }
+  
   .post-template .gh-article-meta-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      gap: 0 !important;
   }
 
   /* HIDE READ NEXT / FOOTER */
   .post-template .gh-read-next, .post-template .gh-footer {
     display: none !important;
+  }
+  
+    /* HIDE EXCERPT ON POST PAGE */
+  .post-template .gh-article-excerpt {
+      display: none !important;
+  }
+
+    /* Custom Minimal Footer */
+  .custom-footer {
+      width: 100%;
+      max-width: 850px; /* Matches your post width */
+      margin: 0 auto;
+      padding: 40px 0 80px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+      font-size: 1.2rem;
+      color: #64748b; /* Soft slate color */
+      letter-spacing: 1px;
+      text-transform: uppercase;
   }
 
   /* --- 6. MOBILE --- */
@@ -346,13 +400,13 @@
 <main class="gh-main">
 <div class="gh-feed">
 <article class="gh-card post">
-<a class="gh-card-link" href="/coming-soon/">
+<a class="gh-card-link" href="/furata-pendulum/">
 <figure class="gh-card-image">
-<picture><img alt="Coming soon" loading="lazy" sizes="320px" src="https://static.ghost.org/v4.0.0/images/feature-image.jpg" srcset="https://static.ghost.org/v4.0.0/images/feature-image.jpg 160w, https://static.ghost.org/v4.0.0/images/feature-image.jpg 320w, https://static.ghost.org/v4.0.0/images/feature-image.jpg 600w, https://static.ghost.org/v4.0.0/images/feature-image.jpg 960w, https://static.ghost.org/v4.0.0/images/feature-image.jpg 1200w, https://static.ghost.org/v4.0.0/images/feature-image.jpg 2000w"/></picture>
+<picture><img alt="Furata Pendulum" loading="lazy" sizes="320px" src="/content/images/size/w600/2026/01/FurataPendulumAssy.png" srcset="/content/images/size/w160/format/webp/2026/01/FurataPendulumAssy.png 160w, /content/images/size/w320/format/webp/2026/01/FurataPendulumAssy.png 320w, /content/images/size/w600/format/webp/2026/01/FurataPendulumAssy.png 600w, /content/images/size/w960/format/webp/2026/01/FurataPendulumAssy.png 960w, /content/images/size/w1200/format/webp/2026/01/FurataPendulumAssy.png 1200w, /content/images/size/w2000/format/webp/2026/01/FurataPendulumAssy.png 2000w"/></picture>
 </figure>
 <div class="gh-card-wrapper">
-<h3 class="gh-card-title is-title">Coming soon</h3>
-<p class="gh-card-excerpt is-body">This is Wyatt Shore, a brand new site by Wyatt Shore that's just getting started. Things will be up and running here shortly, but you can subscribe in the meantime if you'd like to stay up to date and receive emails when new content is published!</p>
+<h3 class="gh-card-title is-title">Furata Pendulum</h3>
+<p class="gh-card-excerpt is-body">I've set out to design and build a custom desktop Furata Pendulum</p>
 <footer class="gh-card-meta">
 <!--
 -->
@@ -386,5 +440,18 @@
 </footer>
 </div>
 <script src="/assets/built/source.js?v=796bdfb0d2"></script>
+<nav id="utility-bar">
+<div class="gh-navigation-brand">
+<a href="/">WS</a>
+</div>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/resume">Resume</a>
+<a href="/about">About</a>
+</div>
+</nav>
+<footer class="custom-footer">
+    © 2026 Wyatt Shore
+</footer>
 </body>
 </html>
