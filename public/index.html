@@ -263,6 +263,24 @@
     margin-top: 150px !important; /* Pushes the whole article down */
   }
 
+  .post-template .gh-content p {
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important; /* Adjust this number (e.g., 0.8rem) for even less space */
+    line-height: 1.5 !important;
+  }
+
+  /* Reduce space after headings too */
+  .post-template .gh-content h2, 
+  .post-template .gh-content h3 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Remove extra gap between list items */
+  .post-template .gh-content li {
+    margin-bottom: 0.3rem !important;
+  }
+
   /* 2. UNIFY THE COLUMN */
   .post-template .gh-canvas, 
   .post-template .gh-content > * {
