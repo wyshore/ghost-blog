@@ -5,20 +5,20 @@
 <title>About</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link as="style" href="/assets/built/screen.css?v=516bde80c5" rel="preload"/>
-<link as="script" href="/assets/built/source.js?v=516bde80c5" rel="preload"/>
-<link as="font" crossorigin="anonymous" href="/assets/fonts/inter-roman.woff2?v=516bde80c5" rel="preload" type="font/woff2"/>
+<link as="style" href="/assets/built/screen.css?v=e9e5d314d1" rel="preload"/>
+<link as="script" href="/assets/built/source.js?v=e9e5d314d1" rel="preload"/>
+<link as="font" crossorigin="anonymous" href="/assets/fonts/inter-roman.woff2?v=e9e5d314d1" rel="preload" type="font/woff2"/>
 <style>
     @font-face {
         font-family: "Inter";
         font-style: normal;
         font-weight: 100 900;
         font-display: optional;
-        src: url(/assets/fonts/inter-roman.woff2?v=516bde80c5) format("woff2");
+        src: url(/assets/fonts/inter-roman.woff2?v=e9e5d314d1) format("woff2");
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
 </style>
-<link href="/assets/built/screen.css?v=516bde80c5" rel="stylesheet" type="text/css"/>
+<link href="/assets/built/screen.css?v=e9e5d314d1" rel="stylesheet" type="text/css"/>
 <style>
         :root {
             --background-color: #ffffff
@@ -53,7 +53,7 @@ I am a mechanical engineering student at the University of Victoria with a passi
 <meta content="https://wyattshore.ca/about/" property="og:url"/>
 <meta content="https://static.ghost.org/v5.0.0/images/publication-cover.jpg" property="og:image"/>
 <meta content="2026-02-04T08:24:19.000Z" property="article:published_time"/>
-<meta content="2026-02-04T08:24:19.000Z" property="article:modified_time"/>
+<meta content="2026-02-04T22:03:23.000Z" property="article:modified_time"/>
 <meta content="https://www.facebook.com/ghost" property="article:publisher"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="About" name="twitter:title"/>
@@ -91,7 +91,7 @@ I am a mechanical engineering student at the University of Victoria with a passi
     "headline": "About",
     "url": "https://wyattshore.ca/about/",
     "datePublished": "2026-02-04T08:24:19.000Z",
-    "dateModified": "2026-02-04T08:24:19.000Z",
+    "dateModified": "2026-02-04T22:03:23.000Z",
     "description": "Hi! I&#x27;m Wyatt\n\nI am a mechanical engineering student at the University of Victoria with a passion for solving complex problems and building things that move. I like to focus on the intersection of design, robotics, manufacturing, and software development, with an emphasis on optimizing how real world systems function. When I&#x27;m not obsessing over a project or buried in SolidWorks, you&#x27;ll probably find me staying active, enjoying the outdoors, or playing guitar.\n\nI truly love the excitement of lea",
     "mainEntityOfPage": "https://wyattshore.ca/about/"
 }
@@ -100,8 +100,8 @@ I am a mechanical engineering student at the University of Victoria with a passi
 <link href="https://wyattshore.ca/rss/" rel="alternate" title="Wyatt Shore" type="application/rss+xml"/>
 <script crossorigin="anonymous" data-key="dee14f214b0a55451d7843b1c7" data-locale="en" data-sodo-search="https://wyattshore.ca/" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" defer="" src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js"></script>
 <link href="https://wyattshore.ca/webmentions/receive/" rel="webmention"/>
-<script defer="" src="/public/cards.min.js?v=516bde80c5"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-<link href="/public/cards.min.css?v=516bde80c5" rel="stylesheet" type="text/css"/>
+<script defer="" src="/public/cards.min.js?v=e9e5d314d1"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+<link href="/public/cards.min.css?v=e9e5d314d1" rel="stylesheet" type="text/css"/>
 <style>
   /* --- 1. GLOBAL & BACKGROUND --- */
   :root {
@@ -405,6 +405,101 @@ I am a mechanical engineering student at the University of Victoria with a passi
 .gh-content {
     margin-top: 140px !important;
 }
+    
+
+  /* --- CUSTOM BUTTON STYLING --- */
+  
+  /* Container alignment */
+  .kg-button-card {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: flex-start !important; /* Aligns button to the left like your text */
+      margin: 2rem 0 !important;
+  }
+
+  /* The Button itself */
+  .kg-btn {
+      background-color: var(--slate-900) !important; /* Matches your title color */
+      color: #ffffff !important;
+      padding: 14px 32px !important;
+      font-size: 1.1rem !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      border-radius: 30px !important; /* Matches your image rounding */
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      text-decoration: none !important;
+      border: 3px solid var(--slate-900) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+  }
+
+  /* Hover State */
+  .kg-btn:hover {
+      background-color: transparent !important;
+      color: var(--slate-900) !important;
+      transform: translateY(-2px) scale(1.05) !important;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2) !important;
+  }
+    
+/* --- CONTACT BOUNDING BOX --- */
+  
+  .contact-footer-box {
+      order: 99 !important; /* Keeps it above footer */
+      width: 100% !important;
+      max-width: 600px !important; /* Set to 850px to match footer width */
+      
+      /* THIS IS THE TIGHTENER: */
+      margin: 0 auto 50px auto !important; /* 0px on top pulls it up to the gallery */
+      
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 2px solid var(--slate-900);
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      text-align: center !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  /* 2. Overriding the editor alignment inside the box */
+  .contact-footer-box h2, 
+  .contact-footer-box p, 
+  .contact-footer-box .kg-button-card {
+      justify-content: center !important;
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+  }
+
+  .contact-footer-box h2 {
+      margin-top: 0 !important;
+      font-size: 2.5rem !important;
+      letter-spacing: -1px !important;
+  }
+
+/* --- LAYOUT WRAPPER --- */
+
+.post-template, .page-template, body {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+
+.gh-main {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.custom-footer {
+    order: 100 !important;
+    margin-top: 0 !important;
+    padding-bottom: 60px !important;
+}
+    
 </style>
 </head>
 <body class="page-template page-about has-sans-title has-sans-body">
@@ -436,7 +531,7 @@ I am a mechanical engineering student at the University of Victoria with a passi
 <h1 class="gh-article-title is-title">About</h1>
 </header>
 <section class="gh-content gh-canvas is-body">
-<h2 id="hi-im-wyatt"><strong>Hi! I'm Wyatt</strong></h2><p>I am a mechanical engineering student at the University of Victoria with a passion for solving complex problems and building things that move. I like to focus on the intersection of design, robotics, manufacturing, and software development, with an emphasis on optimizing how real world systems function. When I'm not obsessing over a project or buried in SolidWorks, you'll probably find me staying active, enjoying the outdoors, or playing guitar. </p><p>I truly love the excitement of learning and applying science and technology to the world around me – you can read about my projects here on this site! </p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 2400w" type="image/webp"/><img alt="" height="2011" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 2400w" type="image/webp"/><img alt="" height="2667" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 2400w" width="2000"/></picture></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 2400w" type="image/webp"/><img alt="" height="3001" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 2400w" type="image/webp"/><img alt="" height="2002" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 2400w" width="2000"/></picture></div></div></div></figure>
+<h2 id="hi-im-wyatt"><strong>Hi! I'm Wyatt</strong></h2><p>I am a mechanical engineering student at the University of Victoria with a passion for solving complex problems and building things that move. I like to focus on the intersection of design, robotics, manufacturing, and software development, with an emphasis on optimizing how real world systems function. When I'm not obsessing over a project or buried in SolidWorks, you'll probably find me staying active, enjoying the outdoors, or playing guitar. </p><p>I truly love the excitement of learning and applying science and technology to the world around me – you can read about my projects here on this site! </p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.webp 2400w" type="image/webp"/><img alt="" height="2011" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0212-3.jpeg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.webp 2400w" type="image/webp"/><img alt="" height="2667" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0480.jpeg 2400w" width="2000"/></picture></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.webp 2400w" type="image/webp"/><img alt="" height="3001" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_9512.jpg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.webp 2400w" type="image/webp"/><img alt="" height="2002" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0098-1.jpeg 2400w" width="2000"/></picture></div></div></div></figure><h2 id=""></h2>
 </section>
 </article>
 </main>
@@ -492,7 +587,7 @@ I am a mechanical engineering student at the University of Victoria with a passi
 </div>
 </div>
 </div>
-<script src="/assets/built/source.js?v=516bde80c5"></script>
+<script src="/assets/built/source.js?v=e9e5d314d1"></script>
 <nav id="utility-bar">
 <div class="gh-navigation-brand">
 <a href="/">WS</a>
@@ -505,6 +600,12 @@ I am a mechanical engineering student at the University of Victoria with a passi
 </nav>
 <footer class="custom-footer">
     © 2026 Wyatt Shore
-</footer>
+</footer> <div class="contact-footer-box">
+<h2>Contact Me</h2>
+<p>Feel free to reach out by clicking my email below!</p>
+<div class="kg-card kg-button-card kg-align-center">
+<a class="kg-btn" href="mailto:wynshore@gmail.com">WYNSHORE@GMAIL.COM</a>
+</div>
+</div>
 </body>
 </html>
