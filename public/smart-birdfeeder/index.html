@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Smart Birdfeeder</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link as="style" href="/assets/built/screen.css?v=672f4e5c82" rel="preload"/>
+<link as="script" href="/assets/built/source.js?v=672f4e5c82" rel="preload"/>
+<link as="font" crossorigin="anonymous" href="/assets/fonts/inter-roman.woff2?v=672f4e5c82" rel="preload" type="font/woff2"/>
+<style>
+    @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(/assets/fonts/inter-roman.woff2?v=672f4e5c82) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+<link href="/assets/built/screen.css?v=672f4e5c82" rel="stylesheet" type="text/css"/>
+<style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+<script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+<meta content="I designed and built a solar powered birdfeeder equipped with a motion sensor, a camera, and a custom desktop app!" name="description"/>
+<link href="https://wyattshore.ca/smart-birdfeeder/" rel="canonical"/>
+<meta content="no-referrer-when-downgrade" name="referrer"/>
+<meta content="Wyatt Shore" property="og:site_name"/>
+<meta content="article" property="og:type"/>
+<meta content="Smart Birdfeeder" property="og:title"/>
+<meta content="I designed and built a solar powered birdfeeder equipped with a motion sensor, a camera, and a custom desktop app!" property="og:description"/>
+<meta content="https://wyattshore.ca/smart-birdfeeder/" property="og:url"/>
+<meta content="https://wyattshore.ca/content/images/2026/02/BirdfeederFullAssy.png" property="og:image"/>
+<meta content="2026-02-05T06:03:59.000Z" property="article:published_time"/>
+<meta content="2026-02-05T09:04:54.000Z" property="article:modified_time"/>
+<meta content="https://www.facebook.com/ghost" property="article:publisher"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Smart Birdfeeder" name="twitter:title"/>
+<meta content="I designed and built a solar powered birdfeeder equipped with a motion sensor, a camera, and a custom desktop app!" name="twitter:description"/>
+<meta content="https://wyattshore.ca/smart-birdfeeder/" name="twitter:url"/>
+<meta content="https://wyattshore.ca/content/images/2026/02/BirdfeederFullAssy.png" name="twitter:image"/>
+<meta content="Written by" name="twitter:label1"/>
+<meta content="Wyatt Shore" name="twitter:data1"/>
+<meta content="@ghost" name="twitter:site"/>
+<meta content="1024" property="og:image:width"/>
+<meta content="697" property="og:image:height"/>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Wyatt Shore",
+        "url": "https://wyattshore.ca/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://wyattshore.ca/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Wyatt Shore",
+        "url": "https://wyattshore.ca/author/wyatt/",
+        "sameAs": []
+    },
+    "headline": "Smart Birdfeeder",
+    "url": "https://wyattshore.ca/smart-birdfeeder/",
+    "datePublished": "2026-02-05T06:03:59.000Z",
+    "dateModified": "2026-02-05T09:04:54.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://wyattshore.ca/content/images/2026/02/BirdfeederFullAssy.png",
+        "width": 1024,
+        "height": 697
+    },
+    "description": "I designed and built a solar powered birdfeeder equipped with a motion sensor, a camera, and a custom desktop app!",
+    "mainEntityOfPage": "https://wyattshore.ca/smart-birdfeeder/"
+}
+    </script>
+<meta content="Ghost 6.14" name="generator"/>
+<link href="https://wyattshore.ca/rss/" rel="alternate" title="Wyatt Shore" type="application/rss+xml"/>
+<script crossorigin="anonymous" data-key="dee14f214b0a55451d7843b1c7" data-locale="en" data-sodo-search="https://wyattshore.ca/" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" defer="" src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js"></script>
+<link href="https://wyattshore.ca/webmentions/receive/" rel="webmention"/>
+<script defer="" src="/public/cards.min.js?v=672f4e5c82"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+<link href="/public/cards.min.css?v=672f4e5c82" rel="stylesheet" type="text/css"/>
+<style>
+  /* --- 1. GLOBAL & BACKGROUND --- */
+  :root {
+    --bg-color: #f8fafc;
+    --dot-color: #cbd5e1;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+  }
+
+  html, body {
+    background-color: var(--bg-color) !important;
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    background-attachment: fixed !important;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  /* CLEANUP: Hide default theme navigation and footer */
+  .gh-head, .gh-navigation, #gh-navigation, .site-header, 
+  .gh-foot, .gh-footer, .site-footer, .gh-sidebar {
+    display: none !important;
+  }
+
+  .gh-article-header {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* --- 2. NAVIGATION (The Floating Utility Bar) --- */
+  #utility-bar {
+    position: fixed;
+    top: 27px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1400px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #utility-bar:hover {
+    width: 94%;
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--slate-800);
+    font-weight: 800;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover { transform: scale(1.1); }
+
+  .gh-navigation-brand a, [class*="logo"] {
+    font-size: 28px !important;
+    font-weight: 900 !important;
+    letter-spacing: -1.5px !important;
+    color: var(--slate-900) !important;
+    text-transform: uppercase;
+    text-decoration: none !important;
+  }
+
+  /* --- 3. HOME PAGE HERO --- */
+  .home-template::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 90vh;
+    background: url("/content/images/2026/01/Seawall_cropped.JPG") center/cover no-repeat !important;
+    position: relative;
+    z-index: 0;
+    border-bottom: 8px solid #0f172a !important;
+    box-shadow: 0 15px 40px 5px rgba(15,23,42,0.5);
+    filter: drop-shadow(0 5px 15px rgba(30, 58, 138, 0.4));
+  }
+
+  .hero-card-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 85vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .home-template .hero-card-container { display: flex !important; }
+
+  .hero-card {
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px 60px;
+    border: 5px solid #1e293b !important;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 700px;
+    pointer-events: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-card h1 { color: #fff !important; font-size: 64px !important; font-weight: 700 !important; margin-bottom: 16px !important; letter-spacing: -2px !important; }
+  .hero-card h2 { color: #fff !important; font-size: 35px !important; font-weight: 500 !important; margin-bottom: 16px !important; letter-spacing: -2px !important; }
+  .hero-card p { color: rgba(255, 255, 255, 0.9) !important; font-size: 16px !important; font-weight: 400 !important; }
+
+  /* --- 4. POST FEED --- */
+  .gh-post-feed {
+    max-width: 1000px !important;
+    margin: 60px auto !important;
+    padding: 0 20px !important;
+  }
+
+  .gh-card {
+    background: white !important;
+    padding: 40px !important;
+    border-radius: 40px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    border: 5px solid #1e293b !important;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    margin-bottom: 40px;
+  }
+
+  .gh-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(30, 41, 59, 0.2) !important;
+    cursor: pointer;
+  }
+
+  .gh-card-image {
+    height: 350px !important;
+    width: 350px !important;
+    border-radius: 30px !important;
+    border: 5px solid #1e293b !important;
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.5) !important;
+    object-fit: cover;
+    overflow: hidden !important;
+  }
+
+  .gh-card-title {
+    font-size: 4rem !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+  }
+
+  .gh-card-excerpt {
+    font-size: 1.8rem !important;
+    line-height: 1.5 !important;
+  }
+
+/* --- 5. POST PAGE (Fixed Alignment & Cleanup) --- */
+  
+  /* 1. MOVE CONTENT BELOW UTILITY BAR */
+  .post-template .gh-article {
+    margin-top: 150px !important; /* Pushes the whole article down */
+  }
+
+  .post-template .gh-content p {
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important; /* Adjust this number (e.g., 0.8rem) for even less space */
+    line-height: 1.5 !important;
+  }
+
+  /* Reduce space after headings too */
+  .post-template .gh-content h2, 
+  .post-template .gh-content h3 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Remove extra gap between list items */
+  .post-template .gh-content li {
+    margin-bottom: 0.3rem !important;
+  }
+
+  /* 2. UNIFY THE COLUMN */
+  .post-template .gh-canvas, 
+  .post-template .gh-content > * {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Forces everything to start at the left */
+    max-width: 850px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 3. TITLE STYLING */
+  .post-template .gh-article-title {
+    text-align: left !important;
+    font-size: 4.5rem !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* 4. AGGRESSIVE IMAGE ROUNDING */
+  /* We target the figure and the actual image class used by the Source theme */
+  .post-template .gh-article-image,
+  .post-template .gh-feature-image,
+  .post-template .kg-image-card figure {
+      border-radius: 30px !important;
+      overflow: hidden !important;
+      position: relative !important;
+  }
+  
+  .post-template .gh-article-image img,
+  .post-template .gh-feature-image img {
+      border-radius: 30px !important;
+      /* This ensures the image fills the rounded container */
+      object-fit: cover !important; 
+      display: block !important;
+  }
+
+  /* 5. BODY TEXT ALIGNMENT */
+  /* This ensures standard paragraphs and lists align with the image left edge */
+  .post-template .gh-content p, 
+  .post-template .gh-content ul, 
+  .post-template .gh-content ol,
+  .post-template .gh-content h2,
+  .post-template .gh-content h3 {
+    text-align: left !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+
+  /* 2. REDUCE AUTHOR PADDING */
+  .post-template .gh-article-meta {
+      margin-top: 0px !important; /* Pulls author info closer to title */
+      padding-top: 0 !important;
+      margin-bottom: 20px !important; /* Space between author and image */
+  }
+  
+  .post-template .gh-article-meta-wrapper {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      gap: 0 !important;
+  }
+
+  /* HIDE READ NEXT / FOOTER */
+  .post-template .gh-read-next, .post-template .gh-footer {
+    display: none !important;
+  }
+  
+    /* HIDE EXCERPT ON POST PAGE */
+  .post-template .gh-article-excerpt {
+      display: none !important;
+  }
+
+    /* Custom Minimal Footer */
+  .custom-footer {
+      width: 100%;
+      max-width: 850px; /* Matches your post width */
+      margin: 0 auto;
+      padding: 40px 0 80px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+      font-size: 1.2rem;
+      color: #64748b; /* Soft slate color */
+      letter-spacing: 1px;
+      text-transform: uppercase;
+  }
+
+  /* --- 6. MOBILE --- */
+  @media (max-width: 768px) {
+    .hero-card { padding: 30px; margin: 0 20px; }
+    .hero-card h1 { font-size: 40px !important; }
+    .gh-card { padding: 30px !important; }
+    #utility-bar { width: 95%; padding: 12px 18px; }
+  }
+</style>
+<div class="hero-card-container">
+<div class="hero-card">
+<h1>Wyatt Shore</h1>
+<h2>Mechanical Engineer</h2>
+<p>I study mechanical engineering at the University of Victoria and I enjoy working on interesting personal projects relating to robotics, design, and more. You can read about my work here!</p>
+</div>
+</div>
+</head>
+<body class="post-template has-sans-title has-sans-body">
+<div class="gh-viewport">
+<header class="gh-navigation is-middle-logo gh-outer" id="gh-navigation">
+<div class="gh-navigation-inner gh-inner">
+<div class="gh-navigation-brand">
+<a class="gh-navigation-logo is-title" href="https://wyattshore.ca">
+                    Wyatt Shore
+            </a>
+<button aria-label="Search this site" class="gh-search gh-icon-button" data-ghost-search="">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button> <button aria-label="Menu" class="gh-burger gh-icon-button">
+<svg fill="currentColor" height="24" viewbox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg> <svg fill="currentColor" height="24" viewbox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg> </button>
+</div>
+<nav class="gh-navigation-menu">
+<ul class="nav">
+<li class="nav-home"><a href="https://wyattshore.ca/">Home</a></li>
+<li class="nav-about"><a href="https://wyattshore.ca/about/">About</a></li>
+</ul>
+</nav>
+<div class="gh-navigation-actions">
+<button aria-label="Search this site" class="gh-search gh-icon-button" data-ghost-search="">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button> </div>
+</div>
+</header>
+<main class="gh-main">
+<article class="gh-article post">
+<header class="gh-article-header gh-canvas">
+<h1 class="gh-article-title is-title">Smart Birdfeeder</h1>
+<p class="gh-article-excerpt is-body">I designed and built a solar powered birdfeeder equipped with a motion sensor, a camera, and a custom desktop app!</p>
+<div class="gh-article-meta">
+<div class="gh-article-author-image instapaper_ignore">
+<a href="/author/wyatt/"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+</a>
+</div>
+<div class="gh-article-meta-wrapper">
+<h4 class="gh-article-author-name"><a href="/author/wyatt/">Wyatt Shore</a></h4>
+<div class="gh-article-meta-content">
+<time class="gh-article-meta-date" datetime="2026-02-05">05 Feb 2026</time>
+<span class="gh-article-meta-length"><span class="bull">—</span> 5 min read</span>
+</div>
+</div>
+</div>
+<figure class="gh-article-image">
+<picture><source sizes="(max-width: 1200px) 100vw, 1120px" srcset="/content/images/2026/02/BirdfeederFullAssy.avif 600w, /content/images/2026/02/BirdfeederFullAssy.avif 1200w" type="image/avif"/><source sizes="(max-width: 1200px) 100vw, 1120px" srcset="/content/images/2026/02/BirdfeederFullAssy.webp 600w, /content/images/2026/02/BirdfeederFullAssy.webp 1200w" type="image/webp"/><img alt="Smart Birdfeeder" loading="lazy" sizes="(max-width: 1200px) 100vw, 1120px" src="/content/images/2026/02/BirdfeederFullAssy.png" srcset="/content/images/2026/02/BirdfeederFullAssy.png 320w, /content/images/2026/02/BirdfeederFullAssy.png 600w, /content/images/2026/02/BirdfeederFullAssy.png 960w, /content/images/2026/02/BirdfeederFullAssy.png 1200w, /content/images/2026/02/BirdfeederFullAssy.png 2000w"/></picture>
+</figure>
+</header>
+<section class="gh-content gh-canvas is-body">
+<p>I decided to build a smart birdfeeder for my girlfriend’s birthday. She loves birds, and I love an excuse to learn new skills, so it seemed like the perfect match. My plan was ambitious: a fully 3D-printed structure, a Raspberry Pi "brain," and—the part that gave me the most grey hairs—integrated solar power.</p><h3 id="stage-1-design-and-material-choice">Stage 1: Design and Material Choice</h3><p>I started with a rough sketch and moved quickly into <strong>SolidWorks</strong> to build a preliminary reference design. I wanted a solid foundation, so I used a wood panel for the base and 3D-printed everything else on top.</p><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.avif 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.avif 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.avif 1041w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.webp 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.webp 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.webp 1041w" type="image/webp"/><img alt="" height="662" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.png" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.png 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.png 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder1.png 1041w" width="1041"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.avif 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.avif 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.avif 1193w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.webp 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.webp 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.webp 1193w" type="image/webp"/><img alt="" height="678" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.png" srcset="https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.png 600w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.png 1000w, https://wyattshore.ca/content/images/2026/02/PreliminaryBirdfeeder2.png 1193w" width="1193"/></picture></div></div></div><figcaption><p><span style="white-space: pre-wrap;">Preliminary SolidWorks Concept, this was just a single part to get a feel for the size and form.</span></p></figcaption></figure><p>For the filament, I chose <strong>PETG</strong>. Most people start with PLA, but since this was going to live outside in the BC weather, I needed something that wouldn't warp under the sun or degrade in the rain.</p><p><strong>The Roof:</strong> To fit on my print bed, I designed the roof in four quarters. I included custom-profiled cutouts to flush-mount two 3W solar panels I found on Amazon.</p><p><strong>The Hopper:</strong> I designed a flap-and-silo system. You pour the seeds in through a flap on the back, and they gravity-feed into a front silo with a glass window so you can see the seed level.</p><hr/><h3 id="solving-the-camera-fov-problem">Solving the Camera FOV Problem</h3><p>This was the most complicated part of the mechanical design. Initially, I planned to put the camera <em>above</em> the seed silo. However, when I modeled the camera’s field of view in SolidWorks, I realized it couldn't see anything up close—it would just be a view of the bird's back at best.</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/CameraFOV.avif 600w, https://wyattshore.ca/content/images/2026/02/CameraFOV.avif 1000w, https://wyattshore.ca/content/images/2026/02/CameraFOV.avif 1262w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/CameraFOV.webp 600w, https://wyattshore.ca/content/images/2026/02/CameraFOV.webp 1000w, https://wyattshore.ca/content/images/2026/02/CameraFOV.webp 1262w" type="image/webp"/><img alt="" class="kg-image" height="727" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/CameraFOV.png" srcset="https://wyattshore.ca/content/images/2026/02/CameraFOV.png 600w, https://wyattshore.ca/content/images/2026/02/CameraFOV.png 1000w, https://wyattshore.ca/content/images/2026/02/CameraFOV.png 1262w" width="1262"/></picture><figcaption><span style="white-space: pre-wrap;">Camera FOV on concept model</span></figcaption></figure><p><strong>The Solution:</strong> I decided to put the camera <em>inside</em> the silo. I designed a hollow "tunnel" that runs right through the middle of the seeds. This kept the camera dry and seed-free while giving it a front-row seat to the action.</p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo.avif 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo.avif 916w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo.webp 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo.webp 916w" type="image/webp"/><img alt="" height="648" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/SeedSilo.png" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo.png 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo.png 916w" width="916"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo2.avif 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo2.avif 933w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo2.webp 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo2.webp 933w" type="image/webp"/><img alt="" height="616" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/SeedSilo2.png" srcset="https://wyattshore.ca/content/images/2026/02/SeedSilo2.png 600w, https://wyattshore.ca/content/images/2026/02/SeedSilo2.png 933w" width="933"/></picture></div></div></div></figure><hr/><h3 id="sourcing-parts-and-electrical-issues">Sourcing Parts and Electrical Issues</h3><p>Sourcing parts was the hardest part of the project (this was before I discovered the magic of AliExpress). I chose a <strong>Raspberry Pi Zero 2W</strong> for the brain because of it's small form factor, low power consumption, and it has built-in Wi-Fi which will be essential.</p><p><strong>The Camera</strong></p><p>For the camera, I was looking at a few options that could be connected to the Raspberry Pi's camera port. I ended up going with the official Raspberry Pi Camera  Module 3, specifically the wide angle version. This 12-megapixel camera is built around the Sony IMX708 sensor with a resolution of 4608 × 2592 pixels, and it also has powered autofocus. <br/></p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/rpicam3-1.avif 600w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.avif 1024w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/rpicam3-1.webp 600w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.webp 1024w" type="image/webp"/><img alt="" class="kg-image" height="1024" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/rpicam3-1.jpg" srcset="https://wyattshore.ca/content/images/2026/02/rpicam3-1.jpg 600w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.jpg 1000w, https://wyattshore.ca/content/images/2026/02/rpicam3-1.jpg 1024w" width="1024"/></picture><figcaption><span style="white-space: pre-wrap;">Raspberry Pi Camera Module 3</span></figcaption></figure><p><strong>The Power System:</strong></p><ul><li>Two 18650 Lithium-ion batteries.</li><li>An Uninterruptible Power Supply (UPS) module to allow simultaneous charging and discharging.</li><li>A pair of 3W USB solar panels.</li></ul><p><strong>The Problem:</strong> I wanted to monitor the battery and solar voltage via an Analog-to-Digital Converter (ADC). But there was an incompatibility: the ADC needed to talk to the Pi at 3.3V logic, but the solar panels were pushing 6V and the batteries 4.2V.</p><p>Instead of waiting for a new part, I worked with what I had and designed a custom perfboard add-on with a simple voltage divider circuit (just a few resistors I soldered together) to scale those high voltages down to a safe 3.3V range. It worked perfectly!</p><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0388-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0388-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.webp 2400w" type="image/webp"/><img alt="" height="2001" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0388-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0388-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0388-1.jpeg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0390-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0390-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.webp 2400w" type="image/webp"/><img alt="" height="1984" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0390-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0390-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0390-1.jpeg 2400w" width="2000"/></picture></div><div class="kg-gallery-image"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0391-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0391-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.webp 2400w" type="image/webp"/><img alt="" height="2000" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0391-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0391-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0391-1.jpeg 2400w" width="2000"/></picture></div></div></div><figcaption><p><span style="white-space: pre-wrap;">The custom voltage divider board I made</span></p></figcaption></figure><hr/><h3 id="fabrication-and-assembly">Fabrication and Assembly</h3><p>I was relatively new to 3D printing when I took this on, and this project was a marathon. Between the housing, the seed silo, and the roof, I spent about three straight days of printing and went through nearly 2kg of PETG filament.</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><img alt="" class="kg-image" height="154" loading="lazy" src="https://wyattshore.ca/content/images/2026/02/FirstPrint-1.jpeg" width="200"/></picture><figcaption><span style="white-space: pre-wrap;">First printed part, seed hopper</span></figcaption></figure><p>As the birthday deadline approached, it was a total scramble. I used brass threaded inserts for all the connections to ensure it was sturdy and used machine screws for assembly. Some parts warped slightly, but with some manual "persuasion", it finally came together.</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.avif 600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.webp 600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.webp 2400w" type="image/webp"/><img alt="" class="kg-image" height="2035" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/BirthdayBirdfeeder-1.jpeg 2400w" width="2000"/></picture><figcaption><span style="white-space: pre-wrap;">Finished Assembly, in time for girlfriend's birthday</span></figcaption></figure><hr/><h3 id="software">Software</h3><p>I’ll be the first to admit: I am primarily a mechanical guy, not a software developer. To get the IoT side working, I relied heavily on AI tools to help me write the Python scripts and build the app. However, I did still have to learn quite a lot and build the system framework on my own. </p><p>When all was said and done, ended up with a pretty cool system:</p><ul><li><strong>Python/Pi:</strong> <ul><li>A script monitors a PIR motion sensor. When a bird arrives, it triggers an interrupt, snaps a photo, and sends it to Firebase (a cloud storage/database).</li><li>Another script monitors the firebase database and checks for flags corresponding to commands from the app. </li></ul></li><li><strong>Flutter App:</strong> I used flutter to build a custom app that pulls data from the cloud so we can manage settings, see battery levels, solar voltage, and a gallery of bird photos. I also integrated a live stream function!</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/AppInterface.avif 600w, https://wyattshore.ca/content/images/2026/02/AppInterface.avif 1000w, https://wyattshore.ca/content/images/2026/02/AppInterface.avif 1600w, https://wyattshore.ca/content/images/2026/02/AppInterface.avif 1920w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/AppInterface.webp 600w, https://wyattshore.ca/content/images/2026/02/AppInterface.webp 1000w, https://wyattshore.ca/content/images/2026/02/AppInterface.webp 1600w, https://wyattshore.ca/content/images/2026/02/AppInterface.webp 1920w" type="image/webp"/><img alt="" class="kg-image" height="1020" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/AppInterface.png" srcset="https://wyattshore.ca/content/images/2026/02/AppInterface.png 600w, https://wyattshore.ca/content/images/2026/02/AppInterface.png 1000w, https://wyattshore.ca/content/images/2026/02/AppInterface.png 1600w, https://wyattshore.ca/content/images/2026/02/AppInterface.png 1920w" width="1920"/></picture><figcaption><span style="white-space: pre-wrap;">The image viewer in the app</span></figcaption></figure><hr/><h3 id="final-finish-and-lessons-learned">Final Finish and Lessons Learned</h3><p>For the final look, we primed and painted the feeder with acrylics and added a UV-resistant clear coat.</p><figure class="kg-card kg-video-card kg-width-regular" data-kg-custom-thumbnail="" data-kg-thumbnail="https://wyattshore.ca/content/media/2026/02/Birdfeeder_thumb.jpg">
+<div class="kg-video-container">
+<video autoplay="" height="1080" loop="" muted="" playsinline="" poster="https://img.spacergif.org/v1/1920x1080/0a/spacer.png" preload="metadata" src="https://wyattshore.ca/content/media/2026/02/Birdfeeder.mp4" style="background: transparent url('https://wyattshore.ca/content/media/2026/02/Birdfeeder_thumb.jpg') 50% 50% / cover no-repeat;" width="1920"></video>
+<div class="kg-video-overlay">
+<button aria-label="Play video" class="kg-video-large-play-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.14 10.608 2.253.164A1.559 1.559 0 0 0 0 1.557v20.887a1.558 1.558 0 0 0 2.253 1.392L23.14 13.393a1.557 1.557 0 0 0 0-2.785Z"></path>
+</svg>
+</button>
+</div>
+<div class="kg-video-player-container kg-video-hide">
+<div class="kg-video-player">
+<button aria-label="Play video" class="kg-video-play-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.14 10.608 2.253.164A1.559 1.559 0 0 0 0 1.557v20.887a1.558 1.558 0 0 0 2.253 1.392L23.14 13.393a1.557 1.557 0 0 0 0-2.785Z"></path>
+</svg>
+</button>
+<button aria-label="Pause video" class="kg-video-pause-icon kg-video-hide">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<rect height="22" rx="1.5" ry="1.5" width="7" x="3" y="1"></rect>
+<rect height="22" rx="1.5" ry="1.5" width="7" x="14" y="1"></rect>
+</svg>
+</button>
+<span class="kg-video-current-time">0:00</span>
+<div class="kg-video-time">
+                            /<span class="kg-video-duration">0:04</span>
+</div>
+<input class="kg-video-seek-slider" max="100" type="range" value="0"/>
+<button aria-label="Adjust playback speed" class="kg-video-playback-rate">1×</button>
+<button aria-label="Unmute" class="kg-video-unmute-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.189 2.021a9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1.794a.249.249 0 0 1 .221.133 9.73 9.73 0 0 0 7.924 4.85h.06a1 1 0 0 0 1-1V3.02a1 1 0 0 0-1.06-.998Z"></path>
+</svg>
+</button>
+<button aria-label="Mute" class="kg-video-mute-icon kg-video-hide">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.177 4.3a.248.248 0 0 0 .073-.176v-1.1a1 1 0 0 0-1.061-1 9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h.114a.251.251 0 0 0 .177-.073ZM23.707 1.706A1 1 0 0 0 22.293.292l-22 22a1 1 0 0 0 0 1.414l.009.009a1 1 0 0 0 1.405-.009l6.63-6.631A.251.251 0 0 1 8.515 17a.245.245 0 0 1 .177.075 10.081 10.081 0 0 0 6.5 2.92 1 1 0 0 0 1.061-1V9.266a.247.247 0 0 1 .073-.176Z"></path>
+</svg>
+</button>
+<input class="kg-video-volume-slider" max="100" type="range" value="100"/>
+</div>
+</div>
+</div>
+</figure><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0484-1.avif 600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.avif 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.avif 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.avif 2400w" type="image/avif"/><source sizes="(min-width: 720px) 720px" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0484-1.webp 600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.webp 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.webp 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.webp 2400w" type="image/webp"/><img alt="" class="kg-image" height="2042" loading="lazy" sizes="(min-width: 720px) 720px" src="https://wyattshore.ca/content/images/2026/02/IMG_0484-1.jpeg" srcset="https://wyattshore.ca/content/images/2026/02/IMG_0484-1.jpeg 600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.jpeg 1000w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.jpeg 1600w, https://wyattshore.ca/content/images/2026/02/IMG_0484-1.jpeg 2400w" width="2000"/></picture><figcaption><span style="white-space: pre-wrap;">Final Product</span></figcaption></figure><p><strong>The Lesson:</strong> <br/><br/>If I did it again, I’d ditch the PIR motion sensor. They are a bit finicky and can false trigger. I’d look into a more reliable motion sensor or even try using the camera itself with some lightweight Computer Vision (CV) to detect movement instead.<br/><br/>I'd also look into a more efficient solar power system, while the solar system in this project ended up working well enough, it could be optimized for battery charging with a dedicated solar power module to integrate maximum power point tracking.</p><p>It’s currently winter, so the birds are lying low, but I’m stoked to see the first "customers" arrive this spring!</p>
+</section>
+</article>
+</main>
+<section class="gh-container is-grid gh-outer">
+<div class="gh-container-inner gh-inner">
+<h2 class="gh-container-title">Read more</h2>
+<div class="gh-feed">
+<article class="gh-card post">
+<a class="gh-card-link" href="/furata-pendulum/">
+<figure class="gh-card-image">
+<picture><img alt="Furata Pendulum" loading="lazy" sizes="320px" src="/content/images/2026/01/FurataPendulumAssy.png" srcset="/content/images/2026/01/FurataPendulumAssy.png 160w, /content/images/2026/01/FurataPendulumAssy.png 320w, /content/images/2026/01/FurataPendulumAssy.png 600w, /content/images/2026/01/FurataPendulumAssy.png 960w, /content/images/2026/01/FurataPendulumAssy.png 1200w, /content/images/2026/01/FurataPendulumAssy.png 2000w"/></picture>
+</figure>
+<div class="gh-card-wrapper">
+<h3 class="gh-card-title is-title">Furata Pendulum</h3>
+<p class="gh-card-excerpt is-body">I've set out to design and build a custom desktop Furata Pendulum</p>
+<footer class="gh-card-meta">
+<!--
+-->
+<span class="gh-card-author">By Wyatt Shore</span>
+<time class="gh-card-date" datetime="2026-01-30">30 Jan 2026</time>
+<!--
+--></footer>
+</div>
+</a>
+</article>
+</div>
+</div>
+</section>
+<footer class="gh-footer gh-outer">
+<div class="gh-footer-inner gh-inner">
+<div class="gh-footer-bar">
+<span class="gh-footer-logo is-title">
+                    Wyatt Shore
+            </span>
+<nav class="gh-footer-menu">
+<ul class="nav">
+<li class="nav-sign-up"><a href="#/portal/">Sign up</a></li>
+</ul>
+</nav>
+<div class="gh-footer-copyright">
+                Powered by <a href="https://ghost.org/" rel="noopener" target="_blank">Ghost</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+<div class="pswp__bg"></div>
+<div class="pswp__scroll-wrap">
+<div class="pswp__container">
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class="pswp__top-bar">
+<div class="pswp__counter"></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title="Share"></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class="pswp__preloader">
+<div class="pswp__preloader__icn">
+<div class="pswp__preloader__cut">
+<div class="pswp__preloader__donut"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class="pswp__share-tooltip"></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+<div class="pswp__caption">
+<div class="pswp__caption__center"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="/assets/built/source.js?v=672f4e5c82"></script>
+<nav id="utility-bar">
+<div class="gh-navigation-brand">
+<a href="/">WS</a>
+</div>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/resume">Resume</a>
+<a href="/about">About</a>
+</div>
+</nav>
+<footer class="custom-footer">
+    © 2026 Wyatt Shore
+</footer>
+</body>
+</html>
